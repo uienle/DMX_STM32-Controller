@@ -52,7 +52,7 @@ After the scenario transfer is complete, the DMX Controller operates independent
 ### Related Projects
 
 - **DMXScenarioDesigner — PC Application:** [DMX_DMXScenarioDesigner_application](https://github.com/uienle/DMX_DMXScenarioDesigner_application)
-- **DMX Device — Receiver Firmware:** [DMX_STM32_Device-LED-MOTO](https://github.com/uienle/DMX_STM32_Device-LED-MOTOR)
+- **DMX Device — Receiver Firmware:** [DMX_STM32_Device-LED-MOTOR](https://github.com/uienle/DMX_STM32_Device-LED-MOTOR)
 
 
 ---
@@ -104,4 +104,4 @@ Sau khi hoàn tất việc truyền kịch bản, DMX Controller hoạt động 
 ### Các dự án liên quan
 
 - **DMXScenarioDesigner — Ứng dụng PC:** [DMX_DMXScenarioDesigner_application](https://github.com/uienle/DMX_DMXScenarioDesigner_application)
-- **DMX Device — Firmware nhận dữ liệu:** [DMX_STM32_Device-LED-MOTO](https://github.com/uienle/DMX_STM32_Device-LED-MOTO)
+- **DMX Device — Firmware nhận dữ liệu:** [DMX_STM32_Device-LED-MOTOR](https://github.com/uienle/DMX_STM32_Device-LED-MOTOR)
