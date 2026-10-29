@@ -8,7 +8,9 @@
 
 ### Overview
 
-This project implements the firmware for a DMX Controller based on the STM32F103C8T6 microcontroller.
+This project implements the transmitter firmware for a DMX512-based musical fountain control system. The DMX Controller (STM32F103C8T6) receives control scenarios from the PC application, stores them in internal Flash memory, and executes them independently to coordinate connected DMX Devices.
+
+The controller generates DMX512 data through a UART interface and an RS-485 transceiver to control compatible fountain equipment, such as RGB LED fixtures and motor-control devices.
 
 The controller executes control scenarios created with **DMXScenarioDesigner**, a PC application. Scenarios are transferred to the controller through a USB virtual COM port and stored in the STM32's internal Flash memory. Once a scenario has been transferred, the controller independently manages scenario timing, executes the programmed effects, and transmits DMX512 data to connected DMX Devices.
 
@@ -29,17 +31,17 @@ After the scenario transfer is complete, the DMX Controller operates independent
 - Scenario transfer from DMXScenarioDesigner through a USB virtual COM port.
 - Scenario storage in the STM32's internal Flash memory.
 - Independent scenario timing and effect execution.
-- DMX512 data transmission using UART and an RS-485 interface.
-- Multi-channel control for coordinating multiple DMX Devices.
+- DMX512 (RS-485) data transmission.
+
 
 ### Hardware and Development Tools
 
 - **Microcontroller:** STM32F103C8T6
-- **DMX512 Transmission:** UART and RS-485
+- **DMX512 Transmission:** UART and RS-485, configured according to DMX512 standard.
 - **PC Communication:** USB virtual COM port
 - **Programming Language:** C
 - **IDE:** STM32CubeIDE
-- **Firmware Library:** STM32 HAL
+- **Firmware Library:** STM32 HAL, STM32 USB Device Library (CDC)
 
 ### Compatibility
 
@@ -49,12 +51,9 @@ After the scenario transfer is complete, the DMX Controller operates independent
 
 ### Related Projects
 
-- **DMXScenarioDesigner — PC Application:** [DMXScenarioDesigner_application](https://github.com/uienle/DMXScenarioDesigner_application)
-- **DMX Device — Receiver Firmware:** [STM32_RxDMX-LED_MOTOR](https://github.com/uienle/STM32_RxDMX-LED_MOTOR)
+- **DMXScenarioDesigner — PC Application:** [DMX_DMXScenarioDesigner_application](https://github.com/uienle/DMX_DMXScenarioDesigner_application)
+- **DMX Device — Receiver Firmware:** [DMX_STM32_Device-LED-MOTO](https://github.com/uienle/DMX_STM32_Device-LED-MOTOR)
 
-### Hardware Schematic (Optional)
-
-[View the DMX Controller schematic](INSERT_SCHEMATIC_LINK_HERE)
 
 ---
 
@@ -62,7 +61,9 @@ After the scenario transfer is complete, the DMX Controller operates independent
 
 ### Tổng quan
 
-Dự án triển khai firmware cho DMX Controller sử dụng vi điều khiển STM32F103C8T6.
+Dự án này triển khai firmware truyền dữ liệu cho hệ thống điều khiển nhạc nước sử dụng giao thức DMX512. DMX Controller (STM32F103C8T6) nhận các kịch bản điều khiển từ ứng dụng máy tính, lưu trữ vào bộ nhớ Flash nội bộ và tự thực thi để điều phối các DMX Device được kết nối.
+
+Bộ điều khiển tạo dữ liệu DMX512 thông qua giao tiếp UART và bộ thu phát RS-485 để điều khiển các thiết bị nhạc nước tương thích, chẳng hạn như đèn LED RGB và thiết bị điều khiển động cơ.
 
 Controller thực thi các kịch bản điều khiển được tạo bằng **DMXScenarioDesigner**, một ứng dụng chạy trên PC. Kịch bản được truyền đến Controller thông qua cổng COM ảo USB và lưu trong bộ nhớ Flash nội của STM32. Sau khi nhận kịch bản, Controller tự quản lý thời gian, thực thi các hiệu ứng đã lập trình và truyền dữ liệu DMX512 đến các DMX Device được kết nối.
 
@@ -80,32 +81,27 @@ Sau khi hoàn tất việc truyền kịch bản, DMX Controller hoạt động 
 
 ### Tính năng chính
 
-- Truyền kịch bản từ DMXScenarioDesigner thông qua cổng COM ảo USB.
+- Nhận kịch bản từ DMXScenarioDesigner thông qua cổng COM ảo USB.
 - Lưu kịch bản trong bộ nhớ Flash nội của STM32.
 - Tự quản lý thời gian và thực thi hiệu ứng theo kịch bản.
-- Truyền dữ liệu DMX512 thông qua UART và giao tiếp RS-485.
-- Điều khiển nhiều kênh để phối hợp hoạt động của nhiều DMX Device.
+- Truyền dữ liệu DMX512 (lớp vật lý RS-485) đến các thiết bị DMX (DMX device).
 
 ### Phần cứng và công cụ phát triển
 
 - **Vi điều khiển:** STM32F103C8T6
-- **Truyền dữ liệu DMX512:** UART và RS-485
+- **Truyền dữ liệu DMX512:** UART và RS-485, cấu hình theo chuẩn DMX512
 - **Giao tiếp với PC:** Cổng COM ảo USB
 - **Ngôn ngữ lập trình:** C
 - **IDE:** STM32CubeIDE
-- **Thư viện firmware:** STM32 HAL
+- **Thư viện firmware:** STM32 HAL, STM32 USB Device Library (CDC)
 
 ### Khả năng tương thích
 
-- Đã thử nghiệm với một thiết bị đèn LED RGB DMX công suất cao.
+- Đã thử nghiệm với thiết bị đèn LED RGB DMX công suất cao.
 - Được thiết kế để truyền dữ liệu DMX512 đến các DMX Device tương thích.
 - Khả năng tương thích với thiết bị khác phụ thuộc vào cách triển khai DMX512, ánh xạ kênh và cấu hình của từng thiết bị.
 
 ### Các dự án liên quan
 
-- **DMXScenarioDesigner — Ứng dụng PC:** [DMXScenarioDesigner_application](https://github.com/uienle/DMXScenarioDesigner_application)
-- **DMX Device — Firmware nhận dữ liệu:** [STM32_RxDMX-LED_MOTOR](https://github.com/uienle/STM32_RxDMX-LED_MOTOR)
-
-### Sơ đồ nguyên lý phần cứng (Tùy chọn)
-
-[Xem schematic DMX Controller](INSERT_SCHEMATIC_LINK_HERE)
+- **DMXScenarioDesigner — Ứng dụng PC:** [DMX_DMXScenarioDesigner_application](https://github.com/uienle/DMX_DMXScenarioDesigner_application)
+- **DMX Device — Firmware nhận dữ liệu:** [DMX_STM32_Device-LED-MOTO](https://github.com/uienle/DMX_STM32_Device-LED-MOTO)
